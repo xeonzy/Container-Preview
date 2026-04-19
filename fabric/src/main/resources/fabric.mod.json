@@ -1,0 +1,39 @@
+{
+	"schemaVersion": 1,
+	"id": "peekinside",
+	"version": "${version}",
+	"name": "Container Preview",
+	"description": "Preview the contents of container items directly in tooltips.",
+	"authors": [
+		"Xeonz"
+	],
+	"license": "ARR",
+	"icon": "icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"dev.peekinside.PeekInsideFabric"
+		],
+		"client": [
+			"dev.peekinside.PeekInsideClient"
+		],
+		"modmenu": [
+			"dev.peekinside.config.PeekConfigScreen"
+		],
+		"peekinside": []
+	},
+	"mixins": [
+		"peekinside.mixins.json",
+		"peekinside-fabric.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"yet_another_config_lib_v3": "*",
+		"modmenu": "*"
+	}
+}

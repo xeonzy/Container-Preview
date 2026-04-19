@@ -1,0 +1,32 @@
+import org.gradle.api.file.DuplicatesStrategy
+
+// Plugins defined in subprojects to maintain Gradle version segregation
+
+def modName = providers.gradleProperty('mod_name').get()
+def modVersion = providers.gradleProperty('version').get()
+def minecraftVersion = providers.gradleProperty('minecraft_version').get()
+
+tasks.register('packageMods', Sync) {
+    group = 'distribution'
+    description = 'Builds every loader jar and copies renamed distributables into the root main folder.'
+    into(rootProject.layout.projectDirectory.asFile.parentFile.toPath().resolve('build/1.21.11'))
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    dependsOn(
+            ':fabric:remapJar',
+            ':neoforge:jar',
+            ':forge:jar'
+    )
+
+    from(project(':fabric').tasks.named('remapJar')) {
+        rename { "${modName}-v${modVersion}-Fabric-${minecraftVersion}.jar" }
+    }
+
+    from(project(':neoforge').tasks.named('jar')) {
+        rename { "${modName}-v${modVersion}-NeoForge-${minecraftVersion}.jar" }
+    }
+
+    from(project(':forge').tasks.named('jar')) {
+        rename { "${modName}-v${modVersion}-Forge-${minecraftVersion}.jar" }
+    }
+}

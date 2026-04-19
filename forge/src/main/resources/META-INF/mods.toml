@@ -1,0 +1,25 @@
+modLoader = "javafml"
+loaderVersion = "[51,)"
+license = "ARR"
+
+[[mods]]
+modId = "peekinside"
+version = "1.0.0"
+displayName = "Container Preview"
+authors = "Xeonz"
+description = "Preview the contents of container items directly in tooltips."
+logoFile = "icon.png"
+
+[[dependencies.peekinside]]
+modId = "forge"
+mandatory = true
+versionRange = "[51.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.peekinside]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.21.11, 1.22)"
+ordering = "NONE"
+side = "BOTH"

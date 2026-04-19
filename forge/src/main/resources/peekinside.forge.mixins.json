@@ -1,0 +1,12 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"package": "dev.peekinside.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"KeyMappingAccessor"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
